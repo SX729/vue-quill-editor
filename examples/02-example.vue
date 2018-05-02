@@ -17,6 +17,7 @@
                       ref="myTextEditor"
                       :content="content"
                       :options="editorOption"
+                       @focus="onEditorFocus($event)"
                       @change="onEditorChange($event)">
         </quill-editor>
         <div class="quill-code">
@@ -74,6 +75,9 @@
       }
     },
     methods: {
+      onEditorFocus(editor) {
+        console.log('editor focus!', editor)
+      },
       onEditorChange({ editor, html, text }) {
         // console.log('editor change!', editor, html, text)
         this.content = html
